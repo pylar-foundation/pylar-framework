@@ -20,7 +20,7 @@ powered by Starlette, SQLAlchemy 2.0, Pydantic, and Jinja2.
 
 ## Documentation
 
-Full documentation is available at [pylar.dev](https://pylar.dev).
+Full documentation is available at [pylar-foundation.github.io/pylar-framework](https://pylar-foundation.github.io/pylar-framework/).
 
 Build locally:
 
@@ -34,13 +34,13 @@ mkdocs serve
 Python 3.12 or newer is required. [uv](https://github.com/astral-sh/uv) is the recommended tool.
 
 ```bash
-pip install pylar
+pip install pylar-framework
 ```
 
 Install with optional extras as needed:
 
 ```bash
-pip install pylar[serve,auth,sqlite]
+pip install pylar-framework[serve,auth,sqlite]
 ```
 
 Available extras: `serve` (uvicorn), `auth` (argon2), `sqlite` (aiosqlite), `postgres` (asyncpg), `mail-markdown`, `cache-redis`, `session-redis`, `storage-s3`, `faker`.

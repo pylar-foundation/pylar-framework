@@ -3,7 +3,12 @@
 Notable user-visible changes per release. See the git history for the
 full log.
 
-## Unreleased
+## 0.1.0 — 2026-04-30 (initial public release)
+
+First public release of `pylar-framework` and `pylar-admin` on PyPI.
+Pin the exact version in your lockfile (`pylar-framework==0.1.0`)
+and review release notes before any minor bump — `0.x` allows
+breaking changes between minors.
 
 ### Added
 
@@ -73,13 +78,6 @@ full log.
   get their own counter. The kernel reads the session cookie name
   from `SessionConfig` when bound, otherwise falls back to
   `pylar_session_id`.
-
-## 0.1.0 — initial public release
-
-First public release of `pylar-framework` and `pylar-admin` on PyPI.
-Tag the exact version in your lockfile (`pylar-framework==0.1.0`)
-and review release notes before any minor bump — `0.x` allows
-breaking changes between minors.
 
 ### `pylar dev` — development server (Phase 14)
 

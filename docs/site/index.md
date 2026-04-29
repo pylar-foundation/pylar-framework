@@ -19,7 +19,7 @@ pylar combines Laravel's developer experience with Python's type system. Every r
 ## Quick Start
 
 ```bash
-pip install pylar
+pip install pylar-framework
 pylar new myapp
 cd myapp
 pylar migrate

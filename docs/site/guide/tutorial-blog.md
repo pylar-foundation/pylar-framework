@@ -13,7 +13,7 @@ condensed.
 ## 1. Bootstrap
 
 ```bash
-pip install pylar[serve,postgres]
+pip install pylar-framework[serve,postgres]
 pylar new myblog
 cd myblog
 ```

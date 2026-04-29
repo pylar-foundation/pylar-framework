@@ -8,7 +8,7 @@
 ## Install
 
 ```bash
-pip install pylar
+pip install pylar-framework
 ```
 
 ### With extras
