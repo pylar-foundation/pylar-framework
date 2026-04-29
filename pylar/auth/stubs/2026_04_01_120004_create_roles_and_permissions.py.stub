@@ -1,0 +1,99 @@
+"""create roles and permissions tables
+
+Revision ID: 0005
+Revises: 0004
+Create Date: 2026-04-01 12:00:04
+
+Four tables:
+* ``pylar_roles``           — named groups of permissions.
+* ``pylar_permissions``     — fine-grained capability codes.
+* ``pylar_user_roles``      — pivot: user → role.
+* ``pylar_role_permissions``— pivot: role → permission.
+
+``user_id`` is stored as VARCHAR(64) so the pivot works with integer,
+UUID, or any other primary-key flavour on the user table.
+
+"""
+from __future__ import annotations
+
+from collections.abc import Sequence
+
+import sqlalchemy as sa
+from alembic import op
+
+revision: str = "0005"
+down_revision: str | None = "0004"
+branch_labels: str | Sequence[str] | None = None
+depends_on: str | Sequence[str] | None = None
+
+
+def upgrade() -> None:
+    op.create_table(
+        "pylar_roles",
+        sa.Column("id", sa.Integer(), nullable=False),
+        sa.Column("name", sa.String(length=64), nullable=False),
+        sa.Column("label", sa.String(length=128), nullable=True),
+        sa.PrimaryKeyConstraint("id"),
+        sa.UniqueConstraint("name"),
+    )
+    op.create_index("ix_pylar_roles_name", "pylar_roles", ["name"])
+
+    op.create_table(
+        "pylar_permissions",
+        sa.Column("id", sa.Integer(), nullable=False),
+        sa.Column("code", sa.String(length=128), nullable=False),
+        sa.Column("label", sa.String(length=128), nullable=True),
+        sa.PrimaryKeyConstraint("id"),
+        sa.UniqueConstraint("code"),
+    )
+    op.create_index("ix_pylar_permissions_code", "pylar_permissions", ["code"])
+
+    op.create_table(
+        "pylar_user_roles",
+        sa.Column("id", sa.Integer(), nullable=False),
+        sa.Column("user_id", sa.String(length=64), nullable=False),
+        sa.Column("role_id", sa.Integer(), nullable=False),
+        sa.PrimaryKeyConstraint("id"),
+    )
+    op.create_index("ix_pylar_user_roles_user_id", "pylar_user_roles", ["user_id"])
+    op.create_index("ix_pylar_user_roles_role_id", "pylar_user_roles", ["role_id"])
+
+    op.create_table(
+        "pylar_role_permissions",
+        sa.Column("id", sa.Integer(), nullable=False),
+        sa.Column("role_id", sa.Integer(), nullable=False),
+        sa.Column("permission_id", sa.Integer(), nullable=False),
+        sa.PrimaryKeyConstraint("id"),
+    )
+    op.create_index(
+        "ix_pylar_role_permissions_role_id",
+        "pylar_role_permissions",
+        ["role_id"],
+    )
+    op.create_index(
+        "ix_pylar_role_permissions_permission_id",
+        "pylar_role_permissions",
+        ["permission_id"],
+    )
+
+
+def downgrade() -> None:
+    op.drop_index(
+        "ix_pylar_role_permissions_permission_id",
+        table_name="pylar_role_permissions",
+    )
+    op.drop_index(
+        "ix_pylar_role_permissions_role_id",
+        table_name="pylar_role_permissions",
+    )
+    op.drop_table("pylar_role_permissions")
+
+    op.drop_index("ix_pylar_user_roles_role_id", table_name="pylar_user_roles")
+    op.drop_index("ix_pylar_user_roles_user_id", table_name="pylar_user_roles")
+    op.drop_table("pylar_user_roles")
+
+    op.drop_index("ix_pylar_permissions_code", table_name="pylar_permissions")
+    op.drop_table("pylar_permissions")
+
+    op.drop_index("ix_pylar_roles_name", table_name="pylar_roles")
+    op.drop_table("pylar_roles")

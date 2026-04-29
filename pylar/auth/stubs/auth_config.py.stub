@@ -1,0 +1,15 @@
+"""Authentication configuration."""
+
+from __future__ import annotations
+
+from pylar.auth import AuthConfig
+
+config = AuthConfig(
+    # The model used for authentication. Points to the User subclass
+    # generated in app/models/user.py. Change if you use a different model.
+    user_model="app.models.user:User",
+
+    # Password hashing algorithm: "pbkdf2" (default, no deps) or "argon2"
+    # (requires pip install 'pylar[auth]').
+    password_hasher="pbkdf2",
+)

@@ -1,0 +1,89 @@
+docs_dir: docs/site
+site_name: pylar
+site_description: Typed async Python web framework — Laravel ergonomics, Django batteries.
+site_url: https://pylar.dev
+repo_url: https://gitlab.iotd.ru/pylar/framework
+repo_name: pylar/framework
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.instant
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.highlight
+    - content.code.copy
+    - content.code.annotate
+  icon:
+    repo: fontawesome/brands/gitlab
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed:
+      alternate_style: true
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: true
+
+nav:
+  - Home: index.md
+  - Getting Started:
+    - Installation: guide/installation.md
+    - Quick Start: guide/quickstart.md
+    - Project Structure: guide/structure.md
+    - 'Tutorial: Build a Blog': guide/tutorial-blog.md
+  - Core Concepts:
+    - Container & Providers: concepts/container.md
+    - Routing: concepts/routing.md
+    - Middleware: concepts/middleware.md
+    - Database: concepts/database.md
+    - Validation: concepts/validation.md
+  - Security:
+    - Authentication: security/auth.md
+    - Encryption: security/encryption.md
+    - Middleware Stack: security/middleware.md
+    - WebAuthn & Passkeys: security/webauthn.md
+    - Production Checklist: security/production.md
+  - Features:
+    - API Layer & OpenAPI: features/api.md
+    - Cache: features/cache.md
+    - Queue & Jobs: features/queue.md
+    - Mail: features/mail.md
+    - Events: features/events.md
+    - Sessions: features/sessions.md
+    - Storage: features/storage.md
+    - Scheduling: features/scheduling.md
+    - Notifications: features/notifications.md
+    - i18n: features/i18n.md
+    - Views: features/views.md
+    - Broadcasting: features/broadcasting.md
+    - Console: features/console.md
+    - Error Pages: features/error-pages.md
+  - Testing: testing.md
+  - Architecture:
+    - ADRs: architecture/adrs.md
+    - Review: architecture/review.md
+  - API Reference: api/index.md
+  - Support Policy: support-policy.md
+  - Changelog: changelog.md

@@ -1,0 +1,23 @@
+"""User model — extend pylar's built-in User with application fields."""
+
+from __future__ import annotations
+
+from pylar.auth.user import User as BaseUser
+from pylar.database import fields
+
+
+class User(BaseUser):
+    """Application user model.
+
+    Extends pylar's built-in User with any fields your app needs.
+    The base class provides: name, email, password_hash, is_admin,
+    created_at, updated_at, and the Authenticatable protocol.
+
+    Add custom fields below::
+
+        phone = fields.CharField(max_length=20, null=True)
+        avatar_url = fields.URLField(null=True)
+    """
+
+    class Meta:
+        db_table = "users"
