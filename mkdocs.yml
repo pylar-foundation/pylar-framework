@@ -1,9 +1,10 @@
 docs_dir: docs/site
 site_name: pylar
 site_description: Typed async Python web framework — Laravel ergonomics, Django batteries.
-site_url: https://pylar.dev
-repo_url: https://gitlab.iotd.ru/pylar/framework
-repo_name: pylar/framework
+site_url: https://pylar-foundation.github.io/pylar-framework/
+repo_url: https://github.com/pylar-foundation/pylar-framework
+repo_name: pylar-foundation/pylar-framework
+edit_uri: edit/main/docs/site/
 
 theme:
   name: material
@@ -30,7 +31,7 @@ theme:
     - content.code.copy
     - content.code.annotate
   icon:
-    repo: fontawesome/brands/gitlab
+    repo: fontawesome/brands/github
 
 markdown_extensions:
   - admonition
